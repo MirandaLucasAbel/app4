@@ -5,9 +5,7 @@ import Home from './Home';
 import Login from './Login';
 import About from './About';
 
-
 export default function Menu() {
-
 
   const Drawer = createDrawerNavigator();
   return (
