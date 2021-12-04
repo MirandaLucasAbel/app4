@@ -10,8 +10,6 @@ import {
     Button,
 } from 'react-native';
 
-import Constants from 'expo-constants';
-
 
 import { getWordData } from '../servicios/Dictionaryapi'
 
@@ -60,20 +58,20 @@ export default function Home({ navigation }) {
                     <Picker.Item label="Ingles" value="EN" />
                     <Picker.Item label="Frances" value="FR" />
                 </Picker>
-            </View>
+                </View>
             <Button
                 title="🔍"
                 onPress={buscarPalabra}
                 color="#f194ff"
                 style={styles.buscar}></Button>
 
-            {!!data && <Text>{data[0].meanings[0].partOfSpeech}</Text> &&
+            {!!data &&  <Text>{data[0].meanings[0].partOfSpeech}</Text> &&
              data[0].meanings[0].definitions.map((data, id) => {
-                return <div key={id}>
+                return <View key={id}>
                     <Text>{data.partOfSpeech}{"\n"}</Text>
                     <Text>definicion: {data.definition}{"\n"}</Text>
                     <Text>ejemplo: {data.example}{"\n"}{"\n"}</Text>
-                </div>
+                </View>
             })}
         </View>
     );
@@ -86,7 +84,7 @@ const styles = StyleSheet.create({
         padding: 8,
     },
     containerBuscar: {
-        flexDirection: 'row',
+        //flexDirection: 'row',
         backgroundColor: '#ecf0f1',
     },
     paragraph: {
@@ -101,9 +99,11 @@ const styles = StyleSheet.create({
         borderWidth: 1,
     },
     buscar: {
-        height: 40,
-        width: 40,
+       color:'#e0b94c',
+        width: 20,
         margin: 12,
         borderWidth: 1,
+        alignItems:'center',
+        justifyContent: 'center'
     },
 });

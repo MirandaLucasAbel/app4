@@ -1,15 +1,32 @@
 import * as React from 'react';
 import { View, Text, Button,StyleSheet } from 'react-native';
 
+import * as Google from 'expo-auth-session/providers/google';
+
+
 export default function Login({ navigation }) {
+
+    const [request, response, promptAsync] = Google.useAuthRequest({
+        expoClientId: '////'
+      });
+
+    React.useEffect(() =>{
+        if(response?.type==='success'){
+          navigation.navigate('home',{auth:response.authentication})
+      }
+      
+      },[response]);
+      
+
+
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text style={{ fontSize: 300 }}>📖</Text>
             <Button
-                title="Login"
-                onPress={1}
-                color="#f194ff"
-                style={styles.input}></Button>
+      style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginTop:40}}
+        title="ingresar con google"
+        onPress={() => promptAsync()}
+      />
         </View>
     );
 }
